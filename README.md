@@ -20,7 +20,9 @@ To run the script, first download the repository and modify the permissions to b
 
 You can also show the help by using the `-h` option (thanks `optparse`).
 
-[SITE] should be the Read by QxMD collection URL that is emailed to you. Of note, I am not sure how to access the proper channel without this email, as it doesn't seem to be accessible when logged in and looking at your collections in your QxMD account, so make sure to have email notifications on. Then destination is simply the folder where you want your PDFs (which will be created if it does not exist).
+[SITE] should be the Read by QxMD collection URL that is emailed to you. 
+
+Of note, I am not sure how to access the proper channel without this email, as it doesn't seem to be accessible when logged in and looking at your collections in your QxMD account, so make sure to have email notifications on. Then destination is simply the folder where you want your PDFs (which will be created if it does not exist). The emails come from `webmaster@qxmd.com` in case you want to create an email rule or keep these from going to the spam folder.
 
 
 ### How it works
