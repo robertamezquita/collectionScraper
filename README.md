@@ -36,6 +36,13 @@ The way script works is as follows:
 Hopefully, this helps reduce the time it takes to download collections of PDFs by an order of magnitude, and decrease hair pulling in the process.
 
 
+### Test case
+
+If you want to test this out, run the following on this test QxMD collection (after going through the prerequisites):
+
+`./collectionScraper.R -s http://qxmd.com/r/shared-collection/6721 -d ~/Documents/test/`
+
+
 ### A final note
 
 While this would be better suited in other languages, `R` is my most familiar language and I felt like starting with something quick and dirty..please feel free to convert this to whatever language you personally like. As time permits I'll try to convert this into something a little more sensible, but for now, it does the job.
