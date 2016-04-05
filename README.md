@@ -1,6 +1,6 @@
 ## QxMD Collection Scraping Made Easy
 
-This repository is an `Rscript` (split up into constituent functions) that takes care of scraping PDFs from Read by QxMD collections. This repo was started because I find it a huge waste of time to go and download one by one each individual PDF. Also, this served as a nice test case for trying to use web scraping technologies such as `(R)Selenium` and other HTML parsing tools (`rvest`, `curl`, `stringr`) to accomplish something that may (or may not) be a time saver in the end.
+This repository is an `Rscript` (split up into constituent functions) that takes care of scraping PDFs from Read by QxMD public collections. This repo was started because I find it a huge waste of time to go and download one by one each individual PDF. Also, this served as a nice test case for trying to use web scraping technologies such as `(R)Selenium` and other HTML parsing tools (`rvest`, `curl`, `stringr`) to accomplish something that may (or may not) be a time saver in the end.
 
 
 ### Prerequisites
@@ -13,16 +13,17 @@ Make sure to have installed the following `R` libraries:
 - `curl`
 - `stringr`
 
-
 To run the script, first download the repository and modify the permissions to be executable for all files. Then, simply type:
 
 `./collectionScraper.R -s [SITE] -d [DEST}`
 
 You can also show the help by using the `-h` option (thanks `optparse`).
 
-[SITE] should be the Read by QxMD collection URL that is emailed to you. 
+[DEST] is the destination folder where you want your PDFs (which will be created if it does not exist). The emails come from `webmaster@qxmd.com` in case you want to create an email rule or keep these from going to the spam folder.
 
-Of note, I am not sure how to access the proper channel without this email, as it doesn't seem to be accessible when logged in and looking at your collections in your QxMD account, so make sure to have email notifications on. Then destination is simply the folder where you want your PDFs (which will be created if it does not exist). The emails come from `webmaster@qxmd.com` in case you want to create an email rule or keep these from going to the spam folder.
+[SITE] should be the Read by QxMD public collection URL that is emailed to you. To get this email, make sure to set your collections (under the star icon) in your Read by QxMD app to be `Public` collections. That way they are (desktop) web accessible. The URL will be emailed to you shortly after setting your collection to be `Public`. 
+
+[Of note, I am not sure how to access your collection without this email, as it doesn't seem to be accessible when logged into your QxMD account, so make sure to have email notifications turned on in the app..]
 
 
 ### How it works
@@ -45,6 +46,7 @@ If you want to test this out, run the following on this test QxMD collection (af
 `./collectionScraper.R -s http://qxmd.com/r/shared-collection/6721 -d ~/Documents/test/`
 
 Additionally, this has only been tested on a Linux system, but will eventually be vetted for both Linux and Mac OS X (I don't have a Windows system available to test on unfortunately).
+
 
 ### A final note on language choice
 
