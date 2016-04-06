@@ -45,7 +45,7 @@ If you want to test this out, run the following on this test QxMD collection (af
 
 `./collectionScraper.R -s http://qxmd.com/r/shared-collection/6721 -d ~/Documents/test/`
 
-You can also try it with keyword collections, as shown [here](https://www.readbyqxmd.com/keyword/8427).
+You can also try it with keyword collections, as shown [here](https://www.readbyqxmd.com/keyword/8427), or even with [journals](https://www.readbyqxmd.com/journal/33017).
 
 Additionally, this has only been tested successfully on a Linux system. I've tried to get this to work on Mac OS X, but with no luck. Make sure to read the RSelenium docs for further information on configuring your setup.
 
