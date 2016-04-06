@@ -19,18 +19,18 @@ To run the script, first download the repository and modify the permissions to b
 
 You can also show the help by using the `-h` option (thanks `optparse`).
 
-[DEST] is the destination folder where you want your PDFs (which will be created if it does not exist). The emails come from `webmaster@qxmd.com` in case you want to create an email rule or keep these from going to the spam folder.
+[DEST] is the destination folder where you want your PDFs (which will be created if it does not exist). 
 
-[SITE] should be the Read by QxMD public collection URL that is emailed to you. To get this email, make sure to set your collections (under the star icon) in your Read by QxMD app to be `Public` collections. That way they are (desktop) web accessible. The URL will be emailed to you shortly after setting your collection to be `Public`. 
+[SITE] should be the Read by QxMD public collection URL that is emailed to you. To get this email, make sure to set your collections (under the star icon) in your Read by QxMD app to be `Public` collections. That way they are (desktop) web accessible. The URL will be emailed to you shortly after setting your collection to be `Public`. The emails come from `webmaster@qxmd.com` in case you want to create an email rule or keep these from going to the spam folder.
 
-[Of note, I am not sure how to access your collection without this email, as it doesn't seem to be accessible when logged into your QxMD account, so make sure to have email notifications turned on in the app..]
+[Of note, I am not sure how to access your collection site without this email, as it doesn't seem to be accessible when logged into your QxMD account, so make sure to have email notifications turned on in the app..]
 
 
 ### How it works
 
-The way script works is as follows:
+The way the script works is as follows:
 
-1. A head script (`collectionScraper.R`) interprets the arguments, loads the necessary libraries, then runs each component.
+1. `collectionScraper.R` interprets the arguments, loads the necessary libraries, then sources each subsequent component.
 2. `navsite.R` is first executed; this will open a browser instance (using `RSelenium`) and automagically navigate to the bottom to load all paper titles.
 3. `extractElements.R` is up next, and extracts the URLs for each paper shown in the QxMD collection.
 4. `grabPDFs.R` then comes in to start a first pass of downloading PDFs for all papers where a PDF is available, using a simple HTML parser (`rvest`) and `curl` for downloading. If a PDF is not immediately available, then the URL is saved for a second pass. If no failures occur, then we are finished.
@@ -45,7 +45,7 @@ If you want to test this out, run the following on this test QxMD collection (af
 
 `./collectionScraper.R -s http://qxmd.com/r/shared-collection/6721 -d ~/Documents/test/`
 
-Additionally, this has only been tested on a Linux system, but will eventually be vetted for both Linux and Mac OS X (I don't have a Windows system available to test on unfortunately).
+Additionally, this has only been tested successfully on a Linux system. I've tried to get this to work on Mac OS X, but with no luck. Make sure to read the RSelenium docs for further information on configuring your setup.
 
 
 ### A final note on language choice
