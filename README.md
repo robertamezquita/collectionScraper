@@ -31,7 +31,7 @@ You can also show the help by using the `-h` option (thanks `optparse`).
 The way the script works is as follows:
 
 1. `collectionScraper.R` interprets the arguments, loads the necessary libraries, then sources each subsequent component.
-2. `navsite.R` is first executed; this will open a browser instance (using `RSelenium`) and automagically navigate to the bottom to load all paper titles.
+2. `navsite.R` is first executed; this will open a browser instance (using `RSelenium`) and automagically navigate to the bottom to load paper titles. To do this, it uses the `end` key three times to go to the bottom of the page, and prompt the JQuery to load more titles. If there are more than around 80 papers, this may not load all the titles, but it should still be a fairly comprehensive reading list.
 3. `extractElements.R` is up next, and extracts the URLs for each paper shown in the QxMD collection.
 4. `grabPDFs.R` then comes in to start a first pass of downloading PDFs for all papers where a PDF is available, using a simple HTML parser (`rvest`) and `curl` for downloading. If a PDF is not immediately available, then the URL is saved for a second pass. If no failures occur, then we are finished.
 5. `failPDFs.R` will be executed in the likely case of a PDF not being available; first, this script once again uses `RSelenium` to open a new browser window, and clicks on the "More Options > Find Additional Links" prompt to search for additional links. This is performed for each paper where no PDF was found on the first pass. Once this is done for all initial failures, then a second pass is performed using the same `grabPDFs.R` procedure (as the QxMD server seems to keep the generated additional links). If there are still failures, these are saved to a `fails.txt` and can consequently be manually downloaded.
@@ -44,6 +44,8 @@ Hopefully, this helps reduce the time it takes to download collections of PDFs b
 If you want to test this out, run the following on this test QxMD collection (after going through the prerequisites):
 
 `./collectionScraper.R -s http://qxmd.com/r/shared-collection/6721 -d ~/Documents/test/`
+
+You can also try it with keyword collections, as shown [here](https://www.readbyqxmd.com/keyword/8427).
 
 Additionally, this has only been tested successfully on a Linux system. I've tried to get this to work on Mac OS X, but with no luck. Make sure to read the RSelenium docs for further information on configuring your setup.
 
